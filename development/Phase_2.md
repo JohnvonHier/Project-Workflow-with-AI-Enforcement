@@ -1,17 +1,6 @@
 # Phase 2 — System Design
 
-Goal
-
-Produce a complete implementation-independent system design. Every subsystem, interface, data contract, responsibility, and interaction is fully specified before implementation begins.
-
----
-
 ## 01. System Architecture
-
-Purpose
-- Define the overall system architecture.
-
-Contents
 - System Context Diagram
 - Layered Architecture
 - Component Diagram
@@ -20,15 +9,70 @@ Contents
 - Dependency Rules
 - Extension Points
 - Architectural Constraints
+- System Integration Diagram
 
 ---
 
-## 02. Workflow Design
+## 02. Data Model Design
+- Entity Definitions
+- Relationships
+- Required Fields
+- Optional Fields
+- Derived Fields
+- Validation Rules
+- Serialization
+- Versioning
+- Migration Strategy
 
-Purpose
-- Define the complete software development workflow.
+---
 
-Contents
+## 03. Integration Specification
+- CLI Interface
+- Git Interface
+- LLM Interface
+- Plugin Interface
+- Manifest Interface
+- Configuration Interface
+
+For each:
+- Purpose
+- Inputs
+- Outputs
+- Preconditions
+- Postconditions
+- Errors
+- Ownership
+- Versioning
+- Examples
+
+---
+
+## 04. Internal Interface Specification
+- Workflow Engine
+- Pipeline Engine
+- State Machine
+- Validation Engine
+- Prompt Engine
+- Persistence Layer
+- Logging
+- Event Bus
+- Configuration Manager
+
+For each:
+- Purpose
+- Provider
+- Consumer
+- Inputs
+- Outputs
+- Events
+- Preconditions
+- Postconditions
+- Errors
+- Invariants
+
+---
+
+## 05. Workflow Design
 - Workflow Graph
 - Workflow Phases
 - Entry Conditions
@@ -41,12 +85,7 @@ Contents
 
 ---
 
-## 03. State Machine Design
-
-Purpose
-- Define deterministic execution.
-
-Contents
+## 06. State Machine Design
 - State Hierarchy
 - State Definitions
 - State Ownership
@@ -60,46 +99,9 @@ Contents
 
 ---
 
-## 04. Data Model Design
+## 07. Pipeline Design
 
-Purpose
-- Define every persistent entity.
-
-Contents
-- Entity Definitions
-- Relationships
-- Required Fields
-- Optional Fields
-- Validation Rules
-- Serialization
-- Versioning
-- Migration Strategy
-
----
-
-## 05. Interface Specification
-
-Purpose
-- Define every public interface between subsystems.
-
-Contents
-- Purpose
-- Inputs
-- Outputs
-- Preconditions
-- Postconditions
-- Errors
-- Ownership
-- Examples
-
----
-
-## 06. Pipeline Design
-
-Purpose
-- Define the complete information flow.
-
-For every transition define
+For every transition define:
 - Trigger
 - Owner
 - Produced Artifacts
@@ -108,20 +110,39 @@ For every transition define
 - Failure Behaviour
 - Success Behaviour
 
-Also define
-- Document Ownership
+Also define:
 - Pipeline Inputs
 - Pipeline Outputs
+- Information Flow
+- Document Ownership
 - LLM Responsibilities
 
 ---
 
-## 07. Prompt System Design
+## 08. Authority Model
 
-Purpose
-- Define prompt generation.
+For every actor define:
+- Responsibilities
+- Authority
+- Allowed Actions
+- Forbidden Actions
+- Owned Artifacts
+- Produced Outputs
+- Required Inputs
+- Validation Responsibilities
 
-Contents
+Actors:
+- Workflow Engine
+- User
+- Architecture LLM
+- Planning LLM
+- Implementation LLM
+- Validation LLM
+- Plugins
+
+---
+
+## 09. Prompt System Design
 - Prompt Philosophy
 - Prompt Templates
 - Context Builder
@@ -135,72 +156,25 @@ Contents
 
 ---
 
-## 08. Validation Design
-
-Purpose
-- Define every validation performed by the engine.
-
-Contents
+## 10. Validation Design
 - Validation Categories
+- Automatic Validation
+- Manual Validation
 - Blocking Validations
 - Warning Validations
 - Informational Validations
 - Validation Order
-- Validation Pipeline
 - Failure Behaviour
 
 ---
 
-## 09. Capability Model
-
-Purpose
-- Define the responsibilities and permissions of every participant.
-
-Contents
-- Workflow Engine
-- Architecture LLM
-- Planning LLM
-- Implementation LLM
-- Validation LLM
-- User
-- Plugins
-
-For each define
-- May
-- Must
-- Must Not
-
----
-
-## 10. Plugin Architecture
-
-Purpose
-- Define extensibility.
-
-Contents
-- Plugin Lifecycle
-- Discovery
-- Registration
-- Interfaces
-- Hooks
-- Capabilities
-- Permission Model
-- Compatibility Rules
-- Isolation
-
----
-
 ## 11. Persistence Design
-
-Purpose
-- Define persistent storage.
-
-Contents
 - State Storage
 - Event Store
 - Session Storage
 - Cache
 - History
+- Transaction Model
 - Recovery
 - Backup Strategy
 - Crash Consistency
@@ -209,11 +183,6 @@ Contents
 ---
 
 ## 12. Git Integration Design
-
-Purpose
-- Define Git interaction.
-
-Contents
 - Git Abstraction Layer
 - Repository Lifecycle
 - Branch Policy
@@ -225,16 +194,25 @@ Contents
 
 ---
 
-## 13. CLI Design
+## 13. Plugin Architecture
+- Plugin Lifecycle
+- Discovery
+- Registration
+- Interfaces
+- Hooks
+- Permission Model
+- Capabilities
+- Compatibility
+- Isolation
 
-Purpose
-- Define the user interface.
+---
 
-Contents
+## 14. CLI Design
 - Command Hierarchy
 - Interactive Mode
 - Non-Interactive Mode
 - State-Aware Commands
+- Workflow Guidance
 - Menus
 - Wizards
 - Progress Reporting
@@ -243,12 +221,7 @@ Contents
 
 ---
 
-## 14. Error Handling Design
-
-Purpose
-- Define deterministic failure handling.
-
-Contents
+## 15. Error Handling Design
 - Error Categories
 - Internal Errors
 - User Errors
@@ -259,15 +232,11 @@ Contents
 
 ---
 
-## 15. Logging Design
-
-Purpose
-- Define observability.
-
-Contents
+## 16. Logging Design
 - Structured Log Format
 - Log Levels
 - Event Log
+- Audit Log
 - State Log
 - Prompt Log
 - Validation Log
@@ -276,12 +245,20 @@ Contents
 
 ---
 
-## 16. Project Layout
+## 17. Configuration Resolution
+- Configuration Sources
+- Resolution Order
+- Defaults
+- Overrides
+- Environment Variables
+- Runtime Values
+- Conflict Resolution
+- Validation
+- Effective Configuration
 
-Purpose
-- Define the filesystem layout.
+---
 
-Contents
+## 18. Project Layout
 - Directory Structure
 - Persistent Files
 - Generated Files
@@ -291,12 +268,9 @@ Contents
 
 ---
 
-## 17. Module Architecture
+## 19. Module Architecture
 
-Purpose
-- Define internal implementation boundaries.
-
-For every module define
+For every module define:
 - Responsibility
 - Public API
 - Owned Data
@@ -304,34 +278,25 @@ For every module define
 - Consumed Events
 - Dependencies
 - Forbidden Dependencies
+- Stability
 - Invariants
 
 ---
 
-## 18. Testing Architecture
-
-Purpose
-- Define how the system architecture is verified.
-
-Contents
+## 20. Testing Architecture
 - Test Pyramid
 - Unit Strategy
 - Integration Strategy
+- Interface Contract Tests
 - State Machine Tests
 - Pipeline Tests
-- Interface Contract Tests
 - Plugin Tests
 - CLI Tests
 - Regression Strategy
 
 ---
 
-## 19. Security Architecture
-
-Purpose
-- Define trust and security boundaries.
-
-Contents
+## 21. Trust & Security Architecture
 - Trust Boundaries
 - Trust Levels
 - Permission Model
@@ -341,39 +306,3 @@ Contents
 - Filesystem Access
 - Command Execution
 - Secret Handling
-
----
-
-# Design Principles
-
-1. Deterministic execution
-2. Single source of truth
-3. Explicit ownership
-4. Explicit state
-5. Validation before execution
-6. Interface-first design
-7. Minimal coupling
-8. High cohesion
-9. Plugin-first extensibility
-10. Recoverability
-11. Reproducibility
-12. State-aware user guidance
-13. Efficient LLM context usage
-14. Minimal cognitive load
-15. Every artifact has one owner
-16. Every transition is validated
-17. Every public interface is specified
-18. Every module owns its own data
-19. Every decision is traceable
-
----
-
-# Phase 3
-
-Implementation Planning
-
-- Implementation Roadmap
-- Milestones
-- Increment Plan
-- Delivery Order
-- Risk Assessment
