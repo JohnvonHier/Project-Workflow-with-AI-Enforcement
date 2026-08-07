@@ -1,0 +1,24 @@
+# Workflow Engine Overview
+
+## Goal
+
+Develop a deterministic workflow engine specifically for AI-assisted solo software development using multiple specialized LLMs (e.g. Architecture, Planning, Implementation).
+
+The engine acts as the project's orchestrator, guiding the user through every development step while minimizing mistakes, enforcing the workflow, validating prerequisites, generating the correct prompts and context, and ensuring that every required action is completed before progressing.
+
+The user should never need to remember the workflow.
+
+---
+
+## Core Ideas
+
+- Deterministic state-machine driven workflow.
+- Prevent mistakes rather than recover from them.
+- Explicit ownership of every artifact and responsibility.
+- One single source of truth for every piece of information.
+- Stable module boundaries and contracts.
+- Strong validation before every transition.
+- Human guidance for every required manual step.
+- Tight Git integration.
+- Plugin-based and configurable architecture.
+- Optimized for efficient LLM usage and low cognitive load.
